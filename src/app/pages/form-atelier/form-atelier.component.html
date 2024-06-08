@@ -1,0 +1,62 @@
+<div class="container-fluid mt-2 w-50">
+    <div class="card mt-1">
+        <div class="card-header">
+            <h3>Enregistrement Trajet</h3>
+        </div>
+        <div class="card-body">
+            <form #formClasse="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="depart">Depart</label>
+                    <input type="text" class="form-control" id="depart"
+                           [(ngModel)]="formCreate.depart"
+                           name="depart">
+                </div>
+
+                
+                
+                
+                <div>
+                    <label for="arrivee">arrivee</label>
+                    <select class="form-control" id="arrivee" name="arrivee" 
+                            [(ngModel)]="formCreate.arrivee" 
+                           >
+                      <option *ngFor="let annee of anneesScolaires" [value]="annee.id">{{ annee.libelle }}</option>
+                    </select>
+                  </div>
+
+                <div class="form-group">
+                    <label for="prix">prix</label>
+                    <input type="text" class="form-control" id="prix"
+                           [(ngModel)]="formCreate.prix"
+                           name="niveau"
+                           #prix="ngModel">
+                         
+                </div>
+
+                <div class="form-group">
+                    <label for="date">date</label>
+                    <input type="date" class="form-control" id="date"
+                           [(ngModel)]="formCreate.date"
+                           name="date">
+                </div>
+                <div class="form-group">
+                    <label for="nbrePlace">nbrePlace</label>
+                    <input type="nbrePlace" class="form-control" id="nbrePlace"
+                           [(ngModel)]="formCreate.nbrePlace"
+                           name="nbrePlace">
+                </div>
+                <div class="form-group">
+                    <label for="nbrePassager">nbrePassager</label>
+                    <input type="nbrePassager" class="form-control" id="nbrePassager"
+                           [(ngModel)]="formCreate.nbrPassager"
+                           name="nbrePassager">
+                </div>
+
+                <div class="my-2">
+                    <button [disabled]="formClasse.invalid" (click)="onSubmit()" class="btn btn-primary float-end">Enregistrer</button>
+                </div>
+           
+            </form>
+        </div>
+    </div>
+</div>

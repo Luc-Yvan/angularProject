@@ -1,0 +1,77 @@
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white">
+            <h3 class="m-0">Liste des Trajets</h3>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-end mb-3">
+              <a routerLink="create" class="btn btn-success">Nouveau trajet</a>
+            </div>
+  
+            <form class="mb-3">
+              <div class="input-group">
+                <input class="form-control" 
+                #keyword (keyup)="searchPrix(keyword.value)"
+                 name="keyword" type="search" placeholder="Rechercher un prix..." aria-label="Rechercher un prix...">
+                <button class="btn btn-outline-secondary" type="button">Rechercher</button>
+              </div>
+            </form>
+  
+            <div class="table-responsive">
+              <table class="table table-hover">
+               
+                <thead>
+                  
+                    <th >id</th>
+                    <th >depart</th>
+                    <th >arrivee</th>
+                    <th >prix</th>
+                    <th >date</th>
+                    <th >nbrePlace</th>
+                    <th >nbrePassager</th>
+
+                  
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of response?.results; let i = index">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.depart }}</td>
+                        <td>{{ item.arrivee}}</td>
+                        <td>{{ item.prix}}</td>
+                        <td>{{ item.date}}</td>
+                        <td>{{ item.nbrePlace}}</td>
+                        <td>{{ item.nbrPassager}}</td>
+                        <td>
+                            <a class="btn btn-outline-success">Voir details</a>
+                        </td>
+                      </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+  
+            <div class="d-flex justify-content-center">
+                <nav aria-label="Page nagigation example">
+                    <ul class="pagination">
+                        <li class="page-item" ><a class="page-link">Previous</a></li>
+                        <tr *ngFor="let item of response?.results; let i = index">
+                            <li class="page-item" [ngClass]="{'active':$index==response?.currentPage}"> 
+                                <a (click)="paginate($index)" class="page-link">{{$index+1}}</a>
+
+                            </li>
+                        </tr>
+                        <li class="page-item" ><a class="page-link">Next</a></li>
+
+
+                    </ul>
+
+                </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
